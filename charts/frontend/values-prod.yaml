@@ -1,0 +1,7 @@
+replicaCount: 2
+ingress:
+  host: frontend.example.local
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi

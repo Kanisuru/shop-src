@@ -1,0 +1,5 @@
+replicaCount: 1
+ingress:
+  host: frontend.dev.local
+image:
+  tag: "manual-1"

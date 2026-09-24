@@ -1,0 +1,45 @@
+replicaCount: 2
+
+image:
+  repository: REPLACE_ME.azurecr.io/shop/api
+  tag: "manual-1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false   # api is internal-only
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+probes:
+  liveness:
+    path: /healthz
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  readiness:
+    path: /readyz
+    initialDelaySeconds: 3
+    periodSeconds: 5
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+
+minReadySeconds: 5
+
+env:
+  APP_VERSION: "manual-1"
+
+serviceAccount:
+  create: false
