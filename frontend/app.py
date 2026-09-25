@@ -18,7 +18,7 @@ def index():
         status = "degraded"
     html = f"""<!doctype html>
     <html><body>
-      <h1>Shop Frontend v2</h1>
+      <h1>Shop Frontend v4 - CI Pipeline Live</h1>
       <p>status: {status}</p>
       <pre>{body}</pre>
     </body></html>"""
